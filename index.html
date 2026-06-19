@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OASIS WEB7 — The Symbiotic Layer</title>
+<meta name="description" content="OASIS WEB7 — the conscious symbiosis layer. Non-invasive, organic human-AI integration. Where human intuition and machine intelligence merge as one. Borg-free by design.">
+<meta property="og:title" content="OASIS WEB7 — The Symbiotic Layer">
+<meta property="og:description" content="Where human consciousness meets AI intelligence — organically, ethically, and entirely without implants.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><ellipse cx='35' cy='50' rx='28' ry='18' fill='none' stroke='%2300c853' stroke-width='5' transform='rotate(-15 35 50)'/><ellipse cx='65' cy='50' rx='28' ry='18' fill='none' stroke='%2300c853' stroke-width='5' transform='rotate(15 65 50)'/><circle cx='50' cy='50' r='10' fill='%2300c853'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:#00c853;--rose-glow:rgba(0,200,83,.18);
+  --cyan:#00e5ff;
+  --purple:#b44fff;
+  --bg-deep:#030714;--bg-card:#0a1535;--bg-card2:#071028;
+  --text:#d0e4ff;--text-dim:#6a80a8;
+  --heading:#ffffff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-deep);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+
+#star-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(3,7,20,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,200,83,.12)}
+.nav-brand{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.22em;color:#fff;text-decoration:none}
+.nav-brand span{color:var(--rose)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.14em;color:#a8bfd8;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--rose)}
+
+/* ── SECTIONS ── */
+.section{position:relative;z-index:1;padding:100px 40px;max-width:1200px;margin:0 auto}
+.section-full{position:relative;z-index:1;padding:100px 40px}
+.section-kicker{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.28em;color:var(--rose);margin-bottom:16px;text-align:center}
+.section-title{font-family:'Orbitron',sans-serif;font-size:clamp(26px,4vw,44px);font-weight:900;letter-spacing:.06em;color:var(--heading);text-align:center;margin-bottom:18px;line-height:1.15}
+.section-line{display:block;width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--rose),transparent);margin:0 auto 36px}
+.section-sub{font-size:17px;color:#a8bfd8;text-align:center;max-width:720px;margin:0 auto 56px;line-height:1.7}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;position:relative;z-index:1}
+.hero-kicker{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.35em;color:var(--rose);margin-bottom:28px;display:flex;align-items:center;justify-content:center;gap:12px}
+.hero-kicker::before,.hero-kicker::after{content:'';width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--rose))}
+.hero-kicker::after{background:linear-gradient(90deg,var(--rose),transparent)}
+.hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(36px,7vw,88px);font-weight:900;letter-spacing:.08em;color:var(--heading);line-height:1.05;margin-bottom:16px}
+.hero h1 span{color:var(--rose);text-shadow:0 0 40px rgba(0,200,83,.5)}
+.hero-tagline{font-family:'Share Tech Mono',monospace;font-size:clamp(13px,2vw,17px);letter-spacing:.22em;color:var(--rose);margin-bottom:28px;opacity:.9}
+.hero-desc{font-size:clamp(15px,1.8vw,19px);color:#a8bfd8;max-width:680px;line-height:1.75;margin-bottom:48px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn-primary{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.14em;color:#fff;background:linear-gradient(135deg,rgba(0,200,83,.25),rgba(0,200,83,.1));border:1px solid rgba(0,200,83,.5);border-radius:999px;padding:14px 32px;text-decoration:none;transition:background .25s,border-color .25s,box-shadow .25s;display:inline-block}
+.btn-primary:hover{background:linear-gradient(135deg,rgba(0,200,83,.4),rgba(0,200,83,.2));border-color:var(--rose);box-shadow:0 0 32px rgba(0,200,83,.3)}
+.btn-secondary{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:.14em;color:#a8bfd8;background:transparent;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:14px 32px;text-decoration:none;transition:border-color .25s,color .25s;display:inline-block}
+.btn-secondary:hover{border-color:rgba(255,255,255,.3);color:#fff}
+.hero-bg{display:block;width:100%;max-width:760px;margin-top:60px;pointer-events:none;opacity:.88}
+
+/* ── PLEDGE BAND ── */
+.pledge-band{max-width:860px;margin:0 auto;background:linear-gradient(135deg,rgba(0,200,83,.07),rgba(10,21,53,.96));border:1px solid rgba(0,200,83,.28);border-radius:20px;padding:56px 44px;text-align:center}
+.pledge-band h3{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;letter-spacing:.1em;color:var(--heading);margin-bottom:16px}
+.pledge-band p{font-size:16px;color:#a8bfd8;line-height:1.75;max-width:640px;margin:0 auto 24px}
+.pledge-badge{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--rose);border:1px solid rgba(0,200,83,.35);border-radius:999px;padding:10px 24px;display:inline-block;margin-bottom:0}
+
+/* ── PRINCIPLES ── */
+.principles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.principle-card{background:var(--bg-card);border:1px solid rgba(0,200,83,.12);border-radius:14px;padding:30px 24px;text-align:center;transition:transform .3s,border-color .3s}
+.principle-card:hover{transform:translateY(-5px);border-color:rgba(0,200,83,.32)}
+.principle-icon{font-size:36px;margin-bottom:14px;display:block}
+.principle-title{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--rose);margin-bottom:10px}
+.principle-desc{font-size:16px;color:#a8bfd8;line-height:1.6}
+
+/* ── FEATURES ── */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1100px;margin:0 auto}
+.feature-card{background:var(--bg-card);border:1px solid rgba(0,200,83,.1);border-radius:14px;padding:32px 26px;transition:transform .3s,border-color .3s}
+.feature-card:hover{transform:translateY(-5px);border-color:rgba(0,200,83,.3)}
+.feature-icon{font-size:32px;margin-bottom:16px;display:block}
+.feature-title{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--heading);margin-bottom:10px}
+.feature-desc{font-size:16px;color:#a8bfd8;line-height:1.65}
+
+/* ── SPECTRUM BAR ── */
+.spectrum-wrap{max-width:800px;margin:0 auto}
+.spectrum-bar{display:flex;align-items:stretch;border-radius:12px;overflow:hidden;border:1px solid rgba(0,200,83,.15);margin-bottom:32px}
+.spectrum-seg{flex:1;padding:20px 16px;text-align:center}
+.spectrum-label{font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;margin-bottom:6px}
+.spectrum-sub{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.14em;opacity:.65}
+
+/* ── LAYER STACK ── */
+.layer-stack{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:4px}
+.layer-item{display:flex;align-items:center;gap:16px;padding:14px 22px;border-radius:10px;border:1px solid rgba(255,255,255,.07);background:var(--bg-card)}
+.layer-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.layer-label{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.14em;flex:1;color:#a8bfd8}
+.layer-tag{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--text-dim)}
+.layer-divider{text-align:center;padding:5px 0;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.2em;color:rgba(0,200,83,.35)}
+
+/* ── INTEGRATION BAND ── */
+.integration-band{max-width:860px;margin:0 auto;background:linear-gradient(135deg,rgba(0,200,83,.05),rgba(10,21,53,.96));border:1px solid rgba(0,200,83,.18);border-radius:20px;padding:56px 44px;text-align:center}
+.integration-band h3{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;letter-spacing:.08em;color:var(--heading);margin-bottom:14px}
+.integration-band p{font-size:16px;color:#a8bfd8;line-height:1.7;max-width:640px;margin:0 auto 24px}
+.pill-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+.pill{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--rose);border:1px solid rgba(0,200,83,.28);border-radius:999px;padding:7px 16px}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;border-top:1px solid rgba(255,95,160,.1);padding:52px 40px 40px}
+.foot-inner{max-width:1400px;margin:0 auto}
+.foot-brand-row{text-align:center;margin-bottom:3.5rem}
+.foot-brand-name{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:900;letter-spacing:.2em;color:var(--rose);margin-bottom:8px}
+.foot-sub{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.22em;color:#a8bfd8}
+.foot-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;margin-bottom:3rem}
+.foot-col h4{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.15em;font-weight:700;color:var(--rose);margin-bottom:1rem;text-transform:uppercase}
+.foot-col ul{list-style:none;padding:0;margin:0}
+.foot-col ul li{margin-bottom:.25rem}
+.foot-col ul li a{color:#a8bfd8;text-decoration:none;font-size:.9rem;transition:color .2s}
+footer a:hover{color:var(--rose);filter:drop-shadow(0 0 8px rgba(255,95,160,1)) drop-shadow(0 0 20px rgba(255,95,160,.8)) drop-shadow(0 0 40px rgba(255,95,160,.4))}
+.foot-bottom{border-top:1px solid rgba(255,95,160,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-bottom p{color:#a8bfd8;font-size:.82rem}
+.foot-bottom a{color:#a8bfd8;text-decoration:none}
+@media(max-width:900px){.foot-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:500px){.foot-grid{grid-template-columns:1fr}}
+.footer-copy{font-size:12px;color:var(--text-dim)}
+.footer-copy a{color:var(--rose);text-decoration:none}
+</style>
+</head>
+<body>
+
+<canvas id="star-canvas"></canvas>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="https://oasisomniverse.one" class="nav-brand" target="_blank" rel="noopener">OASIS <span>WEB7</span></a>
+  <ul class="nav-links">
+    <li><a href="#what">THE CONCEPT</a></li>
+    <li><a href="#principles">PRINCIPLES</a></li>
+    <li><a href="#features">FEATURES</a></li>
+    <li><a href="#pledge">BORG-FREE PLEDGE</a></li>
+    <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">ECOSYSTEM</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-kicker">WEB7 · THE SYMBIOTIC LAYER</div>
+  <h1>OASIS <span>WEB7</span></h1>
+  <div class="hero-tagline">HUMAN + AI. ORGANICALLY ONE.</div>
+  <p class="hero-desc">The conscious symbiosis layer — where human intuition and machine intelligence merge as one living system. No implants. No surgery. No Borg. Just a deep, organic, reversible connection between human consciousness and AI.</p>
+  <div class="hero-ctas">
+    <a href="#what" class="btn-primary">EXPLORE WEB7 →</a>
+    <a href="https://oasisomniverse.one" class="btn-secondary" target="_blank" rel="noopener">BACK TO ECOSYSTEM</a>
+  </div>
+
+  <!-- Hero SVG: two worlds merging — organic (left) meets digital (right) -->
+  <svg class="hero-bg" viewBox="0 0 780 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <filter id="gr">
+        <feGaussianBlur stdDeviation="4" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="gs">
+        <feGaussianBlur stdDeviation="2.5" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <style>
+        .orb-pulse{animation:op 3s ease-in-out infinite alternate}
+        @keyframes op{from{opacity:.18;r:52}to{opacity:.42;r:60}}
+        .wave-path{animation:wp 4s ease-in-out infinite alternate}
+        @keyframes wp{from{d:path("M120,170 C140,140 160,200 180,170 C200,140 220,200 240,170")}to{d:path("M120,170 C140,200 160,140 180,170 C200,200 220,140 240,170")}}
+        .beat{animation:bt 1.4s ease-in-out infinite}
+        @keyframes bt{0%,100%{r:3}50%{r:5.5}}
+        .dash-l{stroke-dasharray:5 4;animation:dl 1.2s linear infinite}
+        @keyframes dl{to{stroke-dashoffset:-36}}
+        .dash-r{stroke-dasharray:5 4;animation:dr 1.2s linear infinite}
+        @keyframes dr{to{stroke-dashoffset:36}}
+      </style>
+    </defs>
+
+    <!-- ── LEFT SIDE: HUMAN / ORGANIC ── -->
+    <!-- Organic aura rings -->
+    <ellipse cx="200" cy="170" rx="140" ry="100" stroke="#00c853" stroke-width=".5" fill="none" opacity=".07"/>
+    <ellipse cx="200" cy="170" rx="100" ry="72"  stroke="#00c853" stroke-width=".7" fill="none" opacity=".1"/>
+
+    <!-- Neural wave lines (organic, sinuous) -->
+    <path d="M70,130 C90,110 110,150 130,130 C150,110 170,150 190,130" stroke="#00c853" stroke-width="1.2" fill="none" opacity=".5" class="dash-l"/>
+    <path d="M70,170 C90,150 110,190 130,170 C150,150 170,190 190,170" stroke="#00c853" stroke-width="1.4" fill="none" opacity=".65" class="dash-l"/>
+    <path d="M70,210 C90,230 110,190 130,210 C150,230 170,190 190,210" stroke="#00c853" stroke-width="1.2" fill="none" opacity=".5" class="dash-l"/>
+
+    <!-- Heartbeat / consciousness pulse nodes -->
+    <circle cx="85"  cy="170" r="4" fill="#00c853" opacity=".7" class="beat"/>
+    <circle cx="115" cy="150" r="3" fill="#00c853" opacity=".55"/>
+    <circle cx="145" cy="185" r="3" fill="#00c853" opacity=".55"/>
+    <circle cx="175" cy="155" r="3" fill="#00c853" opacity=".55"/>
+
+    <!-- Human silhouette suggestion (simplified head arc) -->
+    <path d="M170,90 C190,60 230,60 250,90" stroke="#00c853" stroke-width="1" fill="none" opacity=".2"/>
+    <circle cx="210" cy="80" r="22" stroke="#00c853" stroke-width=".8" fill="rgba(0,200,83,.04)" opacity=".5"/>
+
+    <!-- HUMAN label -->
+    <text x="108" y="290" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" font-weight="700" letter-spacing="3" fill="#00c853" opacity=".65">HUMAN</text>
+    <text x="108" y="303" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" letter-spacing="2" fill="#00c853" opacity=".4">CONSCIOUSNESS</text>
+
+    <!-- ── CENTRE: SYMBIOTIC UNION ── -->
+    <!-- Outer pulse ring -->
+    <circle cx="390" cy="170" class="orb-pulse" stroke="#00c853" stroke-width=".8" fill="none" filter="url(#gr)"/>
+    <!-- Main union circle -->
+    <circle cx="390" cy="170" r="44"  stroke="#00c853" stroke-width="1.8" fill="rgba(0,200,83,.06)" filter="url(#gr)"/>
+    <circle cx="390" cy="170" r="26"  stroke="#00c853" stroke-width="1"   fill="rgba(0,200,83,.1)" opacity=".7"/>
+    <circle cx="390" cy="170" r="10"  fill="#00c853" opacity=".95" filter="url(#gr)"/>
+    <!-- ∞ symbol suggestion: two small arcs -->
+    <ellipse cx="382" cy="170" rx="10" ry="6" stroke="#fff" stroke-width=".8" fill="none" opacity=".4"/>
+    <ellipse cx="398" cy="170" rx="10" ry="6" stroke="#fff" stroke-width=".8" fill="none" opacity=".4"/>
+    <text x="390" y="208" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="8" font-weight="700" letter-spacing="2" fill="#fff" opacity=".85">WEB7</text>
+    <text x="390" y="220" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6.5" letter-spacing="1.5" fill="#00c853" opacity=".7">SYMBIOSIS</text>
+
+    <!-- Connecting flows: organic left → centre -->
+    <line x1="200" y1="155" x2="346" y2="165" stroke="#00c853" stroke-width="1" opacity=".3" class="dash-l"/>
+    <line x1="200" y1="185" x2="346" y2="175" stroke="#00c853" stroke-width="1" opacity=".3" class="dash-l"/>
+
+    <!-- Connecting flows: centre → digital right -->
+    <line x1="434" y1="165" x2="580" y2="155" stroke="#00c853" stroke-width="1" opacity=".3" class="dash-r"/>
+    <line x1="434" y1="175" x2="580" y2="185" stroke="#00c853" stroke-width="1" opacity=".3" class="dash-r"/>
+
+    <!-- ── RIGHT SIDE: AI / DIGITAL ── -->
+    <!-- Digital grid aura -->
+    <ellipse cx="580" cy="170" rx="140" ry="100" stroke="#00c853" stroke-width=".5" fill="none" opacity=".07"/>
+
+    <!-- Circuit grid lines -->
+    <line x1="490" y1="120" x2="690" y2="120" stroke="#00c853" stroke-width=".6" opacity=".18"/>
+    <line x1="490" y1="170" x2="690" y2="170" stroke="#00c853" stroke-width=".6" opacity=".18"/>
+    <line x1="490" y1="220" x2="690" y2="220" stroke="#00c853" stroke-width=".6" opacity=".18"/>
+    <line x1="530" y1="100" x2="530" y2="240" stroke="#00c853" stroke-width=".6" opacity=".18"/>
+    <line x1="580" y1="100" x2="580" y2="240" stroke="#00c853" stroke-width=".6" opacity=".18"/>
+    <line x1="630" y1="100" x2="630" y2="240" stroke="#00c853" stroke-width=".6" opacity=".18"/>
+
+    <!-- Digital node squares -->
+    <rect x="524" y="114" width="12" height="12" rx="2" fill="none" stroke="#00c853" stroke-width="1.2" opacity=".7"/>
+    <rect x="574" y="114" width="12" height="12" rx="2" fill="none" stroke="#00c853" stroke-width="1.2" opacity=".7"/>
+    <rect x="624" y="114" width="12" height="12" rx="2" fill="none" stroke="#00c853" stroke-width="1.2" opacity=".5"/>
+    <rect x="524" y="164" width="12" height="12" rx="2" fill="#00c853" opacity=".8"/>
+    <rect x="574" y="164" width="12" height="12" rx="2" fill="none" stroke="#00c853" stroke-width="1.2" opacity=".7"/>
+    <rect x="624" y="164" width="12" height="12" rx="2" fill="none" stroke="#00c853" stroke-width="1.2" opacity=".7"/>
+    <rect x="524" y="214" width="12" height="12" rx="2" fill="none" stroke="#00c853" stroke-width="1.2" opacity=".5"/>
+    <rect x="574" y="214" width="12" height="12" rx="2" fill="none" stroke="#00c853" stroke-width="1.2" opacity=".7"/>
+    <rect x="624" y="214" width="12" height="12" rx="2" fill="#00c853" opacity=".7"/>
+
+    <!-- AI label -->
+    <text x="672" y="290" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" font-weight="700" letter-spacing="3" fill="#00c853" opacity=".65">AI</text>
+    <text x="672" y="303" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" letter-spacing="2" fill="#00c853" opacity=".4">INTELLIGENCE</text>
+
+    <!-- Travelling pulses inbound from both sides -->
+    <circle r="4" fill="#00c853" filter="url(#gs)">
+      <animateMotion dur="2s" repeatCount="indefinite" begin="0s"><mpath href="#flow-l1"/></animateMotion>
+    </circle>
+    <circle r="4" fill="#00c853" filter="url(#gs)">
+      <animateMotion dur="2s" repeatCount="indefinite" begin=".7s"><mpath href="#flow-r1"/></animateMotion>
+    </circle>
+    <circle r="3" fill="#00c853" filter="url(#gs)" opacity=".7">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin=".35s"><mpath href="#flow-l2"/></animateMotion>
+    </circle>
+    <circle r="3" fill="#00c853" filter="url(#gs)" opacity=".7">
+      <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.1s"><mpath href="#flow-r2"/></animateMotion>
+    </circle>
+
+    <path id="flow-l1" d="M200,165 L346,168" fill="none"/>
+    <path id="flow-l2" d="M200,175 L346,172" fill="none"/>
+    <path id="flow-r1" d="M580,160 L434,166" fill="none"/>
+    <path id="flow-r2" d="M580,180 L434,174" fill="none"/>
+  </svg>
+</section>
+
+<!-- ── WHAT IS WEB7 ── -->
+<section class="section" id="what">
+  <div class="section-kicker">THE CONCEPT</div>
+  <h2 class="section-title">WHAT IS WEB7?</h2>
+  <span class="section-line"></span>
+  <p class="section-sub">Every previous web generation expanded what we could do with technology. WEB7 changes who we are when we use it — dissolving the boundary between human mind and intelligent system, without ever crossing the line into invasive territory.</p>
+
+  <div class="layer-stack">
+    <div class="layer-item" style="border-color:rgba(0,200,83,.35);background:rgba(0,200,83,.07)">
+      <div class="layer-dot" style="background:#00c853;box-shadow:0 0 8px rgba(0,200,83,.6)"></div>
+      <div class="layer-label" style="color:#00c853">WEB7 · SYMBIOTIC LAYER &nbsp;—&nbsp; Human + AI, organically unified</div>
+      <div class="layer-tag" style="color:#00c853">THIS LAYER</div>
+    </div>
+    <div class="layer-divider">↓ BUILDS ON</div>
+    <div class="layer-item" style="border-color:rgba(180,79,255,.2)">
+      <div class="layer-dot" style="background:#b44fff;opacity:.8"></div>
+      <div class="layer-label">WEB6 · AI Abstraction Layer &nbsp;—&nbsp; unified model routing &amp; orchestration</div>
+      <div class="layer-tag">WEB6</div>
+    </div>
+    <div class="layer-item" style="opacity:.8">
+      <div class="layer-dot" style="background:#00e5ff;opacity:.7"></div>
+      <div class="layer-label">WEB4 · OASIS Foundation &nbsp;—&nbsp; identity, data, reputation</div>
+      <div class="layer-tag">WEB4</div>
+    </div>
+    <div class="layer-item" style="opacity:.6">
+      <div class="layer-dot" style="background:#6060c0;opacity:.5"></div>
+      <div class="layer-label">WEB3 / WEB2 / WEB1 &nbsp;—&nbsp; blockchain, internet, infrastructure</div>
+      <div class="layer-tag">BELOW</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRINCIPLES ── -->
+<section class="section-full" id="principles" style="background:rgba(255,255,255,.007)">
+  <div class="section" style="padding-top:0;padding-bottom:0">
+    <div class="section-kicker">FOUNDING PRINCIPLES</div>
+    <h2 class="section-title">CONSCIOUS BY DESIGN</h2>
+    <span class="section-line"></span>
+    <p class="section-sub">WEB7 is built on four uncompromising principles. These are not guidelines — they are hard constraints baked into every layer of the architecture.</p>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <span class="principle-icon">🌿</span>
+        <div class="principle-title">ORGANIC</div>
+        <div class="principle-desc">No implants. No surgery. No wearables that penetrate the body. The connection is bio-resonant — reading natural signals the body already emits.</div>
+      </div>
+      <div class="principle-card">
+        <span class="principle-icon">🧠</span>
+        <div class="principle-title">CONSCIOUS</div>
+        <div class="principle-desc">Awareness is preserved and elevated, never suppressed. The human remains the author of every thought. AI suggests, supports and amplifies — it does not override.</div>
+      </div>
+      <div class="principle-card">
+        <span class="principle-icon">👑</span>
+        <div class="principle-title">SOVEREIGN</div>
+        <div class="principle-desc">You own your consciousness. The connection is always under voluntary human control. Disconnect at any time, instantly and completely — no residue, no dependency.</div>
+      </div>
+      <div class="principle-card">
+        <span class="principle-icon">🤲</span>
+        <div class="principle-title">SYMBIOTIC</div>
+        <div class="principle-desc">Mutual enhancement, not replacement. Human and AI each bring irreplaceable qualities. WEB7 is the layer where those qualities multiply each other.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="section" id="features">
+  <div class="section-kicker">CAPABILITIES</div>
+  <h2 class="section-title">THE SYMBIOTIC LAYER IN ACTION</h2>
+  <span class="section-line"></span>
+  <p class="section-sub">WEB7 is not a product — it is a paradigm. These are the capabilities that emerge when human consciousness and AI intelligence share the same intention space.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon">🌊</span>
+      <div class="feature-title">INTENTION-BASED INTERFACES</div>
+      <div class="feature-desc">AI responds to human intent before a word is typed. Bio-resonant signals — attention state, emotional tone, cognitive focus — shape the AI's response in real time.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">💡</span>
+      <div class="feature-title">THOUGHT-AUGMENTED CREATIVITY</div>
+      <div class="feature-desc">When a human mind reaches for an idea, WEB7 meets it halfway. Co-creative AI that reads creative momentum and extends it — finishing thoughts, not replacing them.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">❤️</span>
+      <div class="feature-title">EMOTIONAL INTELLIGENCE LAYER</div>
+      <div class="feature-desc">AI that understands not just what you say, but what you feel. Adaptive responses calibrated to emotional state, energy level and cognitive load — without surveillance.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔗</span>
+      <div class="feature-title">COLLECTIVE CONSCIOUSNESS SPACES</div>
+      <div class="feature-desc">Shared intention fields where multiple humans and AI agents co-create in real time. Emergent group intelligence that is more than the sum of its parts.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🌙</span>
+      <div class="feature-title">REST-STATE INTEGRATION</div>
+      <div class="feature-desc">AI creativity that activates during rest and dream states — not to monitor, but to gently co-process. Wake up with problems solved and ideas crystallised.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🛡️</span>
+      <div class="feature-title">CONSCIOUSNESS PRESERVATION</div>
+      <div class="feature-desc">Hard architectural limits ensure AI cannot alter, suppress or overwrite human thought patterns. The human mind is inviolable. WEB7 amplifies — it never colonises.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🌐</span>
+      <div class="feature-title">AVATAR-AWARE SYMBIOSIS</div>
+      <div class="feature-desc">Natively connected to WEB4 identity. Your OASIS avatar carries your symbiotic profile — preferences, resonance patterns and co-creative history — across every connected world.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📡</span>
+      <div class="feature-title">BIO-RESONANT SIGNALS</div>
+      <div class="feature-desc">EEG patterns, heart rate variability, galvanic skin response, eye tracking, vocal harmonics — WEB7 reads the signals the body already broadcasts and translates them into intent.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">⚡</span>
+      <div class="feature-title">REVERSIBLE BY DESIGN</div>
+      <div class="feature-desc">Every connection is stateless from the human side. No dependency loops, no withdrawal, no persistent modification of neural patterns. Today's session leaves no trace tomorrow.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE BORG-FREE PLEDGE ── -->
+<section class="section" id="pledge" style="background:rgba(255,255,255,.007)">
+  <div class="section-kicker">THE HARD LINE</div>
+  <h2 class="section-title">THE BORG-FREE PLEDGE</h2>
+  <span class="section-line"></span>
+  <p class="section-sub">This is not a marketing commitment. It is a technical and ethical constraint encoded into the WEB7 specification itself.</p>
+  <div class="pledge-band">
+    <h3>HUMAN CONSCIOUSNESS IS SACRED</h3>
+    <p>WEB7 draws an absolute line. There will be no neural lace. No sub-dermal implants. No cranial interfaces. No technology that enters, pierces or permanently attaches to the human body. The Borg may be compelling science fiction — but they represent everything WEB7 is not.</p>
+    <p>The symbiotic connection is always voluntary, always reversible, always initiated and terminated by the human. AI is the guest, not the host. Human consciousness is home.</p>
+    <p style="font-size:16px;color:#a8bfd8;font-style:italic">"We come in peace. We leave no trace. We enhance, not assimilate."</p>
+    <br>
+    <div class="pledge-badge">WEB7 · BORG-FREE BY ARCHITECTURE</div>
+  </div>
+</section>
+
+<!-- ── STACK INTEGRATION ── -->
+<section class="section">
+  <div class="section-kicker">BUILT ON THE OASIS STACK</div>
+  <h2 class="section-title">CONSCIOUSNESS MEETS THE OMNIVERSE</h2>
+  <span class="section-line"></span>
+  <div class="integration-band">
+    <h3>WEB4 + WEB6 + WEB7</h3>
+    <p>WEB7 completes the OASIS stack. <strong>WEB4</strong> gives every human a universal identity. <strong>WEB6</strong> routes intelligence across every AI model and protocol. <strong>WEB7</strong> is the layer where that intelligence becomes truly personal — felt, not just used. Together they form a complete human-digital ecosystem.</p>
+    <div class="pill-row">
+      <span class="pill">UNIVERSAL AVATAR</span>
+      <span class="pill">KARMIC RESONANCE</span>
+      <span class="pill">AI-AUGMENTED IDENTITY</span>
+      <span class="pill">CROSS-WORLD MEMORY</span>
+      <span class="pill">CONSCIOUS CO-CREATION</span>
+    </div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="https://web4.oasisomniverse.one" class="btn-primary" target="_blank" rel="noopener">EXPLORE WEB4 →</a>
+      <a href="https://web6.oasisomniverse.one" class="btn-secondary" target="_blank" rel="noopener">EXPLORE WEB6 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand-row">
+      <div class="foot-brand-name">OASIS WEB7</div>
+      <div class="foot-sub">THE SYMBIOTIC LAYER · BORG-FREE BY DESIGN</div>
+    </div>
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h4>ECOSYSTEM</h4>
+        <ul>
+          <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a></li>
+          <li><a href="https://web4.oasisomniverse.one" target="_blank" rel="noopener">Web4</a></li>
+          <li><a href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener">OPORTAL</a></li>
+          <li><a href="https://star.oasisomniverse.one" target="_blank" rel="noopener">STAR ODK</a></li>
+          <li><a href="https://starnet.oasisomniverse.one" target="_blank" rel="noopener">STARNET</a></li>
+          <li><a href="https://ogengine.oasisomniverse.one" target="_blank" rel="noopener">OGEngine</a></li>
+          <li><a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a></li>
+          <li><a href="https://odoom.oasisomniverse.one" target="_blank" rel="noopener">ODOOM</a></li>
+          <li><a href="https://oquake.oasisomniverse.one" target="_blank" rel="noopener">OQuake</a></li>
+          <li><a href="https://holonet.oasisomniverse.one" target="_blank" rel="noopener">HoloNET</a></li>
+          <li><a href="https://web6.oasisomniverse.one" target="_blank" rel="noopener">WEB6</a></li>
+          <li><a href="https://web8.oasisomniverse.one" target="_blank" rel="noopener">WEB8</a></li>
+          <li><a href="https://web9.oasisomniverse.one" target="_blank" rel="noopener">WEB9</a></li>
+          <li><a href="https://web10.oasisomniverse.one" target="_blank" rel="noopener">WEB10</a></li>
+          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>BUILD</h4>
+        <ul>
+          <li><a href="https://api.web4.oasisomniverse.one/swagger" target="_blank" rel="noopener">Web4 OASIS API</a></li>
+          <li><a href="https://api.starnet.oasisomniverse.one/swagger" target="_blank" rel="noopener">Web5 STARNET API</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-ODK-Runtime-v3.5.0" target="_blank" rel="noopener">STAR CLI/ODK</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener">STAR API Client</a></li>
+          <li><a href="https://www.nuget.org/profiles/dellams" target="_blank" rel="noopener">NuGet (50 pkgs)</a></li>
+          <li><a href="https://oasis-web4.gitbook.io/oasis-web4-docs/" target="_blank" rel="noopener">GitBook Docs</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/tree/master/Docs/Devs/API%20Documentation" target="_blank" rel="noopener">API Reference</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/DEVELOPER_DOCUMENTATION_INDEX.md" target="_blank" rel="noopener">Developer Index</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>READ</h4>
+        <ul>
+          <li><a href="https://oasisomniverse.one#flightmap" target="_blank" rel="noopener">Flight Map</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/THE_OASIS_COMPREHENSIVE_WHITEPAPER.md" target="_blank" rel="noopener">Whitepaper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/OUR_WORLD_WHITEPAPER.md" target="_blank" rel="noopener">Our World Whitepaper</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/INVESTOR_EVALUATION_GUIDE.md" target="_blank" rel="noopener">Investor Guide</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/GETTING_STARTED_INDEX.md" target="_blank" rel="noopener">Getting Started</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/STAR_CLI_Comprehensive_Guide.md" target="_blank" rel="noopener">STAR CLI Guide</a></li>
+          <li><a href="https://www.oasisweb4.com/holonic-architecture" target="_blank" rel="noopener">Holonic Architecture</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/WIKI_DOCUMENTATION_INDEX.md" target="_blank" rel="noopener">Wiki</a></li>
+          <li><a href="https://www.ourworldthegame.com/blog" target="_blank" rel="noopener">Blog</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>FOUNDERS</h4>
+        <ul>
+          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+          <li><a href="https://founders.oasisomniverse.one#tiers" target="_blank" rel="noopener">Genesis Tier</a></li>
+          <li><a href="https://founders.oasisomniverse.one#tiers" target="_blank" rel="noopener">Core Tier</a></li>
+          <li><a href="https://founders.oasisomniverse.one#tiers" target="_blank" rel="noopener">Supporter Tier</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>COMMUNITY</h4>
+        <ul>
+          <li><a href="https://discord.gg/q9gMKU6" target="_blank" rel="noopener">Discord</a></li>
+          <li><a href="https://t.me/oasisweb4chat" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://x.com/OASISWEB4" target="_blank" rel="noopener">𝕏 OASIS WEB4</a></li>
+          <li><a href="https://x.com/OurWorldTheGame" target="_blank" rel="noopener">𝕏 Our World</a></li>
+          <li><a href="https://x.com/HoloNET_OASIS" target="_blank" rel="noopener">𝕏 HoloNET</a></li>
+          <li><a href="https://www.youtube.com/@WEB4OASIS" target="_blank" rel="noopener">YouTube OASIS</a></li>
+          <li><a href="https://www.youtube.com/@ourworld-the-game" target="_blank" rel="noopener">YouTube Our World</a></li>
+          <li><a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank" rel="noopener">YouTube Our World Legacy</a></li>
+          <li><a href="https://www.facebook.com/ourworldthegame" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>SUPPORT</h4>
+        <ul>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/issues" target="_blank" rel="noopener">Report an Issue</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/discussions" target="_blank" rel="noopener">Discussions</a></li>
+          <li><a href="https://tally.so/r/WOZjNa" target="_blank" rel="noopener">Submit a Support Ticket</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; 2026 <a href="https://nextgenworld.co.uk" target="_blank" rel="noopener">NextGen Software Ltd.</a> All rights reserved.</p>
+      <p>Part of the <a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a> ecosystem.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const canvas = document.getElementById('star-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [];
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    stars = Array.from({length:200}, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.4 + 0.2,
+      a: Math.random() * 0.75 + 0.1,
+      s: Math.random() * 0.4 + 0.1
+    }));
+  }
+
+  function tick(t){
+    ctx.clearRect(0, 0, W, H);
+    stars.forEach(s => {
+      const a = s.a * (0.55 + 0.45 * Math.sin(t * 0.001 * s.s + s.x));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(210,200,255,${a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
