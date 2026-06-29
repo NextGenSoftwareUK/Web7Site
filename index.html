@@ -31,6 +31,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:fl
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.14em;color:#a8bfd8;text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--rose)}
+.nav-cta{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--rose);border:1px solid rgba(255,95,160,.35);border-radius:999px;padding:8px 18px;text-decoration:none;transition:background .2s,border-color .2s;white-space:nowrap}
+.nav-cta:hover{background:rgba(255,95,160,.08);border-color:rgba(255,95,160,.6)}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--rose);border-radius:2px}
 
@@ -190,8 +192,8 @@ footer a:hover,.foot-col ul li a:hover{color:var(--rose);filter:drop-shadow(0 0 
     <li><a href="#pledge">BORG-FREE PLEDGE</a></li>
     <li><a href="#infinite-reality">INFINITE REALITY</a></li>
     <li><a href="#stack-integration">OMNIVERSE STACK</a></li>
-    <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">ECOSYSTEM</a></li>
   </ul>
+  <a href="https://oasisomniverse.one" target="_blank" rel="noopener" class="nav-cta">ECOSYSTEM</a>
   <div class="nav-hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
