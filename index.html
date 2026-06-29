@@ -31,6 +31,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:fl
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.14em;color:#a8bfd8;text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--rose)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--rose);border-radius:2px}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+}
 
 /* ── SECTIONS ── */
 .section{position:relative;z-index:1;padding:100px 40px;max-width:1200px;margin:0 auto}
@@ -125,6 +132,48 @@ footer a:hover,.foot-col ul li a:hover{color:var(--rose);filter:drop-shadow(0 0 
 }
 .footer-copy{font-size:12px;color:var(--text-dim)}
 .footer-copy a{color:var(--rose);text-decoration:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:16px 20px}
+  .section{padding:70px 24px}
+  .section-full{padding:70px 24px}
+  .principles-grid,.features-grid{grid-template-columns:1fr 1fr!important;gap:16px}
+  .hero-bg{max-width:100%}
+  .foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:720px){
+  .section{padding:60px 20px}
+  .section-full{padding:60px 20px}
+  .section-title{font-size:clamp(22px,5vw,32px)}
+  .section-sub{font-size:15px;margin-bottom:40px}
+  .principles-grid,.features-grid{grid-template-columns:1fr!important;gap:14px}
+  .principle-card{padding:24px 18px}
+  .feature-card{padding:24px 18px}
+  .feature-title{font-size:12px}
+  .feature-desc{font-size:15px}
+  .pledge-band,.integration-band{padding:40px 26px}
+  .layer-stack{gap:3px}
+  .layer-item{padding:12px 16px;gap:10px}
+  .layer-label{font-size:10px}
+  .spectrum-bar{flex-direction:column}
+  .hero-ctas{flex-direction:column;align-items:center;width:100%}
+  .btn-primary,.btn-secondary{width:80%;text-align:center}
+}
+@media(max-width:520px){
+  .section{padding:48px 16px}
+  .section-full{padding:48px 16px}
+  .hero{padding:100px 20px 60px}
+  .hero-desc{font-size:14px}
+  .principle-card,.feature-card{padding:20px 14px}
+  .principle-desc,.feature-desc{font-size:14px}
+  .pledge-band,.integration-band{padding:32px 18px}
+  .pledge-band h3,.integration-band h3{font-size:16px}
+  .layer-label{font-size:9px}
+  .layer-tag{display:none}
+  .pill{font-size:9px;padding:6px 12px}
+  .btn-primary,.btn-secondary{width:100%}
+}
 </style>
 </head>
 <body>
@@ -140,8 +189,12 @@ footer a:hover,.foot-col ul li a:hover{color:var(--rose);filter:drop-shadow(0 0 
     <li><a href="#features">FEATURES</a></li>
     <li><a href="#pledge">BORG-FREE PLEDGE</a></li>
     <li><a href="#infinite-reality">INFINITE REALITY</a></li>
+    <li><a href="#stack-integration">OMNIVERSE STACK</a></li>
     <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">ECOSYSTEM</a></li>
   </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <!-- ── HERO ── -->
@@ -457,7 +510,7 @@ footer a:hover,.foot-col ul li a:hover{color:var(--rose);filter:drop-shadow(0 0 
 </section>
 
 <!-- ── STACK INTEGRATION ── -->
-<section class="section">
+<section class="section" id="stack-integration">
   <div class="section-kicker">BUILT ON THE OASIS STACK</div>
   <h2 class="section-title">CONSCIOUSNESS MEETS THE OMNIVERSE</h2>
   <span class="section-line"></span>
@@ -588,6 +641,33 @@ footer a:hover,.foot-col ul li a:hover{color:var(--rose);filter:drop-shadow(0 0 
 </footer>
 
 <script>
+function toggleMenu(){
+  const nav = document.querySelector('.nav-links');
+  const isOpen = nav.style.display === 'flex';
+  if(isOpen){
+    nav.style.display = 'none';
+  } else {
+    nav.style.display = 'flex';
+    nav.style.position = 'absolute';
+    nav.style.top = '100%';
+    nav.style.left = '0';
+    nav.style.right = '0';
+    nav.style.flexDirection = 'column';
+    nav.style.gap = '0';
+    nav.style.background = 'rgba(3,7,20,.97)';
+    nav.style.padding = '12px 24px 20px';
+    nav.style.borderBottom = '1px solid rgba(255,95,160,.18)';
+  }
+}
+document.querySelectorAll('.nav-links a').forEach(function(link){
+  link.addEventListener('click', function(){
+    const nav = document.querySelector('.nav-links');
+    if(window.innerWidth <= 900){
+      nav.style.display = 'none';
+    }
+  });
+});
+
 (function(){
   const canvas = document.getElementById('star-canvas');
   const ctx = canvas.getContext('2d');
