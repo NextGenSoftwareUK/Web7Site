@@ -137,16 +137,17 @@ footer a:hover,.foot-col ul li a:hover{color:var(--rose);filter:drop-shadow(0 0 
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  nav{padding:16px 20px}
+  nav{padding:16px 1rem}
+  .nav-cta{display:none!important}
   .section{padding:70px 1rem}
   .section-full{padding:70px 1rem}
   .principles-grid,.features-grid{grid-template-columns:1fr 1fr!important;gap:16px}
   .hero-bg{max-width:100%}
-  .foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
 }
 @media(max-width:720px){
-  .section{padding:60px 20px}
-  .section-full{padding:60px 20px}
+  .section{padding:60px 1rem}
+  .section-full{padding:60px 1rem}
   .section-title{font-size:clamp(22px,5vw,32px)}
   .section-sub{font-size:15px;margin-bottom:40px}
   .principles-grid,.features-grid{grid-template-columns:1fr!important;gap:14px}
